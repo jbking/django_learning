@@ -1,0 +1,13 @@
+{% extends "board/post_detail.html" %}
+{% block content %}
+  {# post_detail.htmlのcontentブロックの内容を出力して #}
+  {{ block.super }}
+  {# フォームを追加している #}
+  <form class="pure-form pure-form-stacked pure-u-1" method="POST">
+    <fieldset>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Comment</button>
+    </fieldset>
+  </form>
+{% endblock %}

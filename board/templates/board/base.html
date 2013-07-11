@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static "css/pure-0.2.0-min.css" %}"/>
+  <link rel="stylesheet" href="{% static "css/font-awesome-3.2.1-min.css" %}"/>
+  <style>
+    body {
+      margin: auto; /* center in viewport */
+      width: 960px;
+    }
+  </style>
+</head>
+<body>
+  <header class="pure-menu pure-menu-open pure-menu-horizontal">
+    <ul>
+      <li><a class="pure-button" href="{% url 'home' %}"><i class="icon-list"></i>Posts</a></li>
+      <li><a class="pure-button" href="{% url 'add_new_post' %}"><i class="icon-edit"></i>Add new post</a></li>
+    </ul>
+  </header>
+  <section class="pure-g-r">
+    {% block content %}
+    {% endblock %}
+  </section>
+</body>
+</html>

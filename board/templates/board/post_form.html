@@ -1,0 +1,10 @@
+{% extends "board/base.html" %}
+{% block content %}
+  <form class="pure-form pure-form-stacked pure-u-1" method="POST">
+    <fieldset>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="pure-button" type="submit">Add</button>
+    </fieldset>
+  </form>
+{% endblock %}

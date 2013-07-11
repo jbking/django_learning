@@ -1,0 +1,18 @@
+{% extends "board/base.html" %}
+{% block content %}
+  <article class="pure-u-1">
+    {% autoescape on %}
+      <h3>{{ post.subject }}</h3>
+      <p>{{ post.body|linebreaksbr }}</p>
+      <p><small>{{ post.updated_at }}{{ post.author }}</small></p>
+      <div>
+        {% for comment in post.comment_set.all %}
+          <p>{{ comment.body|linebreaksbr }}</p>
+          <p><small>by {{ comment.author }} {{ comment.updated_at }}</small></p>
+        {% empty %}
+          <p><small>No comments</small></p>
+        {% endfor %}
+      </div>
+    {% endautoescape %}
+  </article>
+{% endblock %}

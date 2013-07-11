@@ -1,0 +1,25 @@
+{% extends "board/base.html" %}
+{% load post_extras %}
+{% block content %}
+  <div class="pure-u-1">
+    {% for post in posts %}
+      <article>
+        {% autoescape on %}
+          <div>
+            {# board/urls.pyのname='show_post_detail'を参照している #}
+            <h3><a href="{% url 'show_post_detail' post.id %}">{{ post.subject }}</a></h3>
+            <p><small>by {{ post.author }} {{ post.updated_at }}</small></p>
+            <p>{{ post.body|truncatechars:500|linebreaksbr }}</p>
+          </div>
+          <div>
+            {% for comment in post|latest_comments %}
+              <p>{{ comment.body|truncatechars:20|linebreaksbr }}</p>
+            {% empty %}
+              <p><small>No comments</small></p>
+            {% endfor %}
+          </div>
+        {% endautoescape %}
+      </article>
+    {% endfor %}
+  </div>
+{% endblock %}
