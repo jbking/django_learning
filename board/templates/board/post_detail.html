@@ -3,6 +3,9 @@
   <article class="pure-u-1">
     {% autoescape on %}
       <h3>{{ post.subject }}</h3>
+      {% if post.icon %}
+        <div><img src="{{ post.icon.url }}"></div>
+      {%  endif %}
       <p>{{ post.body|linebreaksbr }}</p>
       <p><small>{{ post.updated_at }}{{ post.author }}</small></p>
       <div>

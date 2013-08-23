@@ -9,6 +9,9 @@
             {# board/urls.pyのname='show_post_detail'を参照している #}
             <h3><a href="{% url 'show_post_detail' post.id %}">{{ post.subject }}</a></h3>
             <p><small>by {{ post.author }} {{ post.updated_at }}</small></p>
+            {% if post.icon %}
+            <div><img src="{{ post.icon.url }}"></div>
+            {%  endif %}
             <p>{{ post.body|truncatechars:500|linebreaksbr }}</p>
           </div>
           <div>
